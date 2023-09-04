@@ -44,7 +44,7 @@ public class InsertTest01 {
 			System.out.println("error : " + e);
 		} finally {
 			try {
-				// 6. 자원정리
+				// 7. 자원정리
 				if (stmt != null) {
 					stmt.close();
 				}

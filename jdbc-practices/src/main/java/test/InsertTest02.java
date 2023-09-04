@@ -2,24 +2,19 @@ package test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-public class UpdateTest01 {
-	
+public class InsertTest02 {
 	public static void main(String[] args) {
-		DeptVo vo = new DeptVo();
-		vo.setNo(2L);
-		vo.setName("전략기획팀");
-		
-		boolean result = updateDepartment(vo);
+		boolean result = insertDepartment("QA팀");
 		System.out.println(result ? "성공" : "실패");
 	}
 
-	private static boolean updateDepartment(DeptVo vo) {
+	private static boolean insertDepartment(String name) {
 		boolean result = false;
 		Connection conn = null;
-		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		try {
 			// 1. JDBC Driver Class 로딩
 			Class.forName("org.mariadb.jdbc.Driver");
@@ -31,17 +26,18 @@ public class UpdateTest01 {
 			String url = "jdbc:mariadb://192.168.0.179:3307/" + database + "?charset=utf8";
 			conn = DriverManager.getConnection(url, user, password);
 
-			// 3. Statement 객체 생성
-			stmt = conn.createStatement();
+			// 3. SQL 준비 (값이 binding 될 수 있도록)
+ 			String sql = "insert into dept values(null, ?)";
+			pstmt = conn.prepareStatement(sql);
 
-			// 4. SQL 실행
-			// jdbc에 넣는 쿼리는 무조건 ; 뺴기 !
-			String query = "update dept set name = '" + vo.getName() + "' where no = " + vo.getNo();
+			// 4. 값 binding
+			pstmt.setString(1, name);
+			
+			// 5. SQL 실행
+			// sql 준비하고 값 넣고, sql을 실행해야함.
+			int count = pstmt.executeUpdate();
 
-			// 입력, 수정, 삭제는 executeUpdate
-			int count = stmt.executeUpdate(query); // insert된 개수 return
-
-			// 5. 결과 처리
+			// 6. 결과 처리
 			result = count == 1;
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩 실패 : " + e);
@@ -49,9 +45,9 @@ public class UpdateTest01 {
 			System.out.println("error : " + e);
 		} finally {
 			try {
-				// 6. 자원정리
-				if (stmt != null) {
-					stmt.close();
+				// 7. 자원정리
+				if (pstmt != null) {
+					pstmt.close();
 				}
 				if (conn != null) {
 					conn.close();
@@ -62,5 +58,4 @@ public class UpdateTest01 {
 		}
 		return result;
 	}
-
 }
