@@ -1,0 +1,11 @@
+1. default workspace에 maven project 생성
+
+2. eclipse Project Explorer에서 삭제 (디스크에서 삭제 체크해제)
+
+3. 넣으려고 하는 프로젝트안에 복사
+
+4. jdbc-practices 안의 pom.xml, src를 제외한 모든 파일 삭제
+
+5. mariadb-practices 안에 jdbc-practices 프로젝트 import
+
+6. pom.xml 작성 후 Maven - Update Proejct 실행

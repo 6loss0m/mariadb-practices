@@ -40,6 +40,13 @@ where e.emp_no = s.emp_no
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 매니저 이름, 부서 이름으로 출력해 보세요.
 
+select d.dept_no, dm.emp_no
+from departments d, dept_manager dm
+where d.dept_no = dm.dept_no
+	and dm.to_date = '9999-01-01'
+order by d.dept_no;
+
+
  
 -- 문제5.
 -- 현재, 평균연봉이 가장 높은 부서의 사원들의 사번, 이름, 직책, 연봉을 조회하고 연봉 순으로 출력하세요.
