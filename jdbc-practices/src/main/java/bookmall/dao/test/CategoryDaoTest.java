@@ -12,37 +12,37 @@ public class CategoryDaoTest {
 	public static void main(String[] args) {
 		testFindByAll();
 		
-		testFindByNo(1);
+//		testFindByNo(1);
+//		
+//		testFindByTitle("컴퓨터/IT");
 		
-		testFindByTitle("컴퓨터/IT");
-		
-		boolean result = testInsertCategory("에세이");
-		System.out.println(result ? "성공" : "실패");
-		
-		result = testDeleteByNo(7L);
-		System.out.println(result ? "성공" : "실패");
-		
-		testFindByAll();
+//		boolean result = testInsertCategory("에세이");
+//		System.out.println(result ? "성공" : "실패");
+//		
+//		result = testDeleteByNo(7L);
+//		System.out.println(result ? "성공" : "실패");
+//		
+//		testFindByAll();
 	} 
 
 	private static void testFindByAll() {
 		List<CategoryVo> list = new CategoryDao().findByAll();
 		for (CategoryVo vo : list) {
-			System.out.println(vo.getNo() + " : " + vo.getName());
+			System.out.println(vo);
 		}
 	}
 
 	private static void testFindByNo(int no) {
 		List<CategoryVo> list = new CategoryDao().findByNo(no);
 		for (CategoryVo vo : list) {
-			System.out.println(vo.getNo() + " : " + vo.getName());
+			System.out.println(vo);
 		}
 	}
 
 	private static void testFindByTitle(String title) {
 		List<CategoryVo> list = new CategoryDao().findByTitle(title);
 		for (CategoryVo vo : list) {
-			System.out.println(vo.getNo() + " : " + vo.getName());
+			System.out.println(vo);
 		}
 	}
 	

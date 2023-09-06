@@ -11,19 +11,17 @@ import bookmall.vo.MemberVo;
 
 public class CartDaoTest {
 	public static void main(String[] args) {
-		testFindByAll();
+//		testFindByAll();
 //
-//		// member1이 book1을 3개 담음
 //		CartVo vo1 = new CartVo();
-//		vo1.setBook_no(5L);
+//		vo1.setBook_no(2L);
 //		vo1.setCount(3L);
-//		vo1.setMembers_no(1L);
+//		vo1.setMember_no(1L);
 //
-//		// member3이 book4를 2개 담음
 //		CartVo vo2 = new CartVo();
-//		vo2.setBook_no(5L);
+//		vo2.setBook_no(8L);
 //		vo2.setCount(2L);
-//		vo2.setMembers_no(3L);
+//		vo2.setMember_no(1L);
 //
 //		testFindByAll();
 //
@@ -31,7 +29,7 @@ public class CartDaoTest {
 //		testInsert(vo2);
 //
 //		testFindByAll();
-
+//
 		testFindByMemberNo(1L);
 		
 		testFindByMemberName("홍길동");
@@ -46,6 +44,7 @@ public class CartDaoTest {
 			System.out.println(
 					book.getTitle() + " | " + vo.getCount() + "개 | " + (vo.getCount() * book.getPrice()) + "원");
 		}
+		System.out.println("-----------------------------------");
 	}
 
 	private static void testFindByMemberName(String name) {
@@ -56,6 +55,7 @@ public class CartDaoTest {
 			System.out.println(
 					book.getTitle() + " | " + vo.getCount() + "개 | " + (vo.getCount() * book.getPrice()) + "원");
 		}
+		System.out.println("-----------------------------------");
 	}
 
 	private static void testInsert(CartVo vo) {

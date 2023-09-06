@@ -18,6 +18,6 @@ public class CategoryVo {
 	}
 	@Override
 	public String toString() {
-		return "CategoryVo [no=" + no + ", name=" + name + "]";
+		return "[" + no + "] " + name + "";
 	}
 }

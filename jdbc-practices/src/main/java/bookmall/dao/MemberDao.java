@@ -38,7 +38,7 @@ public class MemberDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String query = "select no, id, name, phone, email, password from members order by no";
+			String query = "select no, id, name, phone, email, password from member order by no";
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
@@ -97,7 +97,7 @@ public class MemberDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String query = "select no, id, phone, email, password from members where name = ? order by no";
+			String query = "select no, id, phone, email, password from member where name = ? order by no";
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
@@ -156,7 +156,7 @@ public class MemberDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String query = "select no, name, phone, email, password from members where id = ? order by no";
+			String query = "select no, name, phone, email, password from member where id = ? order by no";
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
@@ -215,7 +215,7 @@ public class MemberDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String query = "select id, name, phone, email, password from members where no = ? order by no";
+			String query = "select id, name, phone, email, password from member where no = ? order by no";
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
@@ -273,7 +273,7 @@ public class MemberDao {
 			conn = getConnection();
 
 			// 3. SQL 준비 (값이 binding 될 수 있도록)
-			String sql = "insert into members values(null, ?, ?, ?, ?, password(?))";
+			String sql = "insert into member values(null, ?, ?, ?, ?, password(?))";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4. 값 binding
@@ -315,7 +315,7 @@ public class MemberDao {
 
 			conn = getConnection();
 
-			String sql = "delete from members where name = ?";
+			String sql = "delete from member where name = ?";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4. 값 binding
@@ -353,7 +353,7 @@ public class MemberDao {
 
 			conn = getConnection();
 
-			String sql = "delete from members where id = ?";
+			String sql = "delete from member where id = ?";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4. 값 binding

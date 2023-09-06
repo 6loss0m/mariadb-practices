@@ -37,7 +37,7 @@ public class CartDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String query = "select no, members_no, book_no, count, price from cart order by members_no";
+			String query = "select no, member_no, book_no, count from cart order by member_no";
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
@@ -48,18 +48,15 @@ public class CartDao {
 			// 6. 결과 처리
 			while (rs.next()) {
 				Long no = rs.getLong(1);
-				Long members_no = rs.getLong(2);
+				Long member_no = rs.getLong(2);
 				Long book_no = rs.getLong(3);
 				Long count = rs.getLong(4);
-				Long price = rs.getLong(5);
 
 				CartVo vo = new CartVo();
 				vo.setNo(no);
-				vo.setMembers_no(members_no);
+				vo.setMember_no(member_no);
 				vo.setBook_no(book_no);
 				vo.setCount(count);
-				vo.setPrice(price);
-
 				result.add(vo);
 			}
 
@@ -93,14 +90,13 @@ public class CartDao {
 			conn = getConnection();
 
 			// 3. SQL 준비 (값이 binding 될 수 있도록)
-			String sql = "insert into cart values (null, ?, ?, ?, ?)";
+			String sql = "insert into cart values (null, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 
 			// 4. 값 binding
 			pstmt.setLong(1, vo.getCount());
-			pstmt.setLong(2, new BookDao().findByNo(vo.getBook_no()).getPrice() * vo.getCount());
-			pstmt.setLong(3, vo.getBook_no());
-			pstmt.setLong(4, vo.getMembers_no());
+			pstmt.setLong(2, vo.getBook_no());
+			pstmt.setLong(3, vo.getMember_no());
 
 			// 5. SQL 실행
 			// sql 준비하고 값 넣고, sql을 실행해야함.
@@ -136,7 +132,7 @@ public class CartDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String query = "select book_no, count, price from cart where members_no = ?";
+			String query = "select book_no, count from cart where member_no = ?";
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
@@ -149,13 +145,11 @@ public class CartDao {
 			while (rs.next()) {
 				Long book_no = rs.getLong(1);
 				Long count = rs.getLong(2);
-				Long price = rs.getLong(3);
 
 				CartVo vo = new CartVo();
 				vo.setBook_no(book_no);
 				vo.setCount(count);
-				vo.setMembers_no(no);
-				vo.setPrice(price);
+				vo.setMember_no(no);
 
 				result.add(vo);
 			}
@@ -191,9 +185,9 @@ public class CartDao {
 			conn = getConnection();
 
 			// 3. SQL 준비
-			String query = "select c.members_no, c.book_no, c.count, c.price "
-					+ " from cart c, members m "
-					+ " where c.members_no = m.no"
+			String query = "select c.member_no, c.book_no, c.count "
+					+ " from cart c, member m "
+					+ " where c.member_no = m.no"
 					+ " and m.name = ?";
 			pstmt = conn.prepareStatement(query);
 
@@ -207,14 +201,12 @@ public class CartDao {
 			while (rs.next()) {
 				Long no = rs.getLong(1);
 				Long book_no = rs.getLong(2);
-				Long count = rs.getLong(2);
-				Long price = rs.getLong(3);
+				Long count = rs.getLong(3);
 
 				CartVo vo = new CartVo();
 				vo.setBook_no(book_no);
 				vo.setCount(count);
-				vo.setMembers_no(no);
-				vo.setPrice(price);
+				vo.setMember_no(no);
 
 				result.add(vo);
 			}
