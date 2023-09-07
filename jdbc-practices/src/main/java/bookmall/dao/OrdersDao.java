@@ -133,6 +133,7 @@ public class OrdersDao {
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
+			pstmt.setLong(1, member_no);
 
 			// 5. SQL 실행
 			rs = pstmt.executeQuery();
@@ -193,7 +194,9 @@ public class OrdersDao {
 			pstmt = conn.prepareStatement(query);
 
 			// 4. binding
+			pstmt.setString(1, orderNo);
 
+			
 			// 5. SQL 실행
 			rs = pstmt.executeQuery();
 

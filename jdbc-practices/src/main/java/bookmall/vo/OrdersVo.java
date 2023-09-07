@@ -70,7 +70,7 @@ public class OrdersVo {
 		return "[ 주문번호(" + orderManageNo + ") ]\n"
 				+" 주문자 : " + name + " / " + email + "\n"
 				+" 결제금액 : "+payment + "\n"
-				+" 배송지=" + deliveryAddress;
+				+" 배송지 : " + deliveryAddress;
 	}
 
 }
