@@ -6,20 +6,28 @@ import bookmall.dao.BookDao;
 import bookmall.vo.BookVo;
 
 public class BookDaoTest {
-	public static void main(String[] args) {
-//		BookVo bookVo1 = new BookVo();
-//		bookVo1.setTitle("오펜하이머");
-//		bookVo1.setCategory_no(1L);
-//		bookVo1.setPrice(15800L);
-//		boolean result = insertTest(bookVo1);
-//		System.out.print((result == true) ? "성공" : "실패");
-//
-//		BookVo bookVo2 = new BookVo();
-//		bookVo2.setTitle("도둑맞은 집중력");
-//		bookVo2.setCategory_no(4L);
-//		bookVo2.setPrice(16920L);
-//		result = insertTest(bookVo2);
-//		System.out.print((result == true) ? "성공" : "실패");
+	public static void test() {
+		
+		BookVo bookVo1 = new BookVo();
+		bookVo1.setTitle("오펜하이머");
+		bookVo1.setCategory_no(3L);
+		bookVo1.setPrice(15800L);
+
+		BookVo bookVo2 = new BookVo();
+		bookVo2.setTitle("도둑맞은 집중력");
+		bookVo2.setCategory_no(1L);
+		bookVo2.setPrice(16920L);
+		
+		BookVo bookVo3 = new BookVo();
+		bookVo3.setTitle("말하기 수업");
+		bookVo3.setCategory_no(2L);
+		bookVo3.setPrice(15120L);
+
+		
+		insertTest(bookVo1);
+		insertTest(bookVo2);
+		insertTest(bookVo3);
+
 		findAllTest();
 //
 //		String title = "오펜하이머";

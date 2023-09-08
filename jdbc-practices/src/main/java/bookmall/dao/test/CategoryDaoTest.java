@@ -9,7 +9,12 @@ import hr.dao.vo.EmployeesVo;
 
 public class CategoryDaoTest {
 
-	public static void main(String[] args) {
+	public static void test() {
+		
+		testInsertCategory("소설");
+		testInsertCategory("수필");
+		testInsertCategory("컴퓨터/IT");
+		
 		testFindByAll();
 		
 //		testFindByNo(1);

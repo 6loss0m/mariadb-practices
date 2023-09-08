@@ -6,28 +6,28 @@ import bookmall.dao.MemberDao;
 import bookmall.vo.MemberVo;
 
 public class MemberDaoTest {
-	public static void main(String[] args) {
-		testFindByAll();
+	
+	public static void test(){
 
-//		MemberVo memVo1 = new MemberVo();
-//		memVo1.setId("aaa321");
-//		memVo1.setPassword("123");
-//		memVo1.setName("둘리");
-//		memVo1.setEmail("a@naver.com");
-//		memVo1.setPhone("1234-5678-0000");
-//
-//		MemberVo memVo2 = new MemberVo();
-//		memVo2.setId("b111");
-//		memVo2.setPassword("123");
-//		memVo2.setName("또치");
-//		memVo2.setEmail("b111@naver.com");
-//		memVo2.setPhone("4321-1233-9999");
-//		
-//		testInsert(memVo1);
-//		testInsert(memVo2);
-
-		testFindByAll();
+		MemberVo memberVo1 = new MemberVo();
+		memberVo1.setId("dolydoly");
+		memberVo1.setPassword("doly123");
+		memberVo1.setName("둘리");
+		memberVo1.setEmail("doly@gmail.com");
+		memberVo1.setPhone("010-1357-2345");
 		
+		MemberVo memberVo2 = new MemberVo();
+		memberVo2.setId("toto");
+		memberVo2.setPassword("to0101");
+		memberVo2.setName("또치");
+		memberVo2.setEmail("ttochi@gmail.com");
+		memberVo2.setPhone("010-6543-2109");
+		
+		testInsert(memberVo1);
+		testInsert(memberVo2);
+		
+		testFindByAll();
+
 //		String id = "aaa321";
 //		testFindById(id);
 //
@@ -48,7 +48,6 @@ public class MemberDaoTest {
 		for (MemberVo vo : list) {
 			System.out.println(vo);
 		}
-		System.out.println("-------------------------------");
 	}
 
 	private static boolean testDeleteByName(String name) {
